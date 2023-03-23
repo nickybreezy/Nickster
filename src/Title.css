@@ -1,0 +1,45 @@
+.Title {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: rgb(111, 31, 39);
+    color: #fff;
+}
+
+/* Modify the background color */
+.navbar-custom {
+    background-color: #240208;
+    justify-content: center;
+
+}
+
+.navbar-custom .navbar-brand {
+    font-size: xx-large !important;
+}
+
+
+body {
+    font-family: Warownia, sans-serif;
+    color: grey;
+}
+
+@font-face {
+    font-family: 'Warownia';
+    src: url('fonts/Warownia.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.logo {
+    background-image: url('logo.svg');
+    width: 200px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    margin-right: auto;
+}

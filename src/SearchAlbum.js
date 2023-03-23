@@ -1,4 +1,5 @@
 import './App.css';
+import './SearchAlbum.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, InputGroup, FormControl, Button, Row, Card} from 'react-bootstrap';
 import {useState, useEffect} from "react";
@@ -6,6 +7,7 @@ import Home from './Home'
 import Login from "./Login";
 import App from "./App";
 import {Route, Link, Router, BrowserRouter, Routes} from "react-router-dom";
+
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
 const CLIENT_SECRET = "a0c007ed7ada4e0aa5eabfeb02a6ffc9";
@@ -59,10 +61,10 @@ function SearchAlbum() {
 
     return (
         <div className="SearchAlbum">
-            <h1>Search any artists you like to see their albums!</h1>
+            <h1 style={{color: 'white', margin: '5px'}}>Search any artists you like to see their albums!</h1>
 
             <Container>
-                <InputGroup className="mb-3" size="lg">
+                <InputGroup className="mb-3 d-flex" size="lg">
                     <FormControl placeholder="Search For Artist" type="input" onKeyPress={event => {
                         if (event.key == "Enter") {
                             search();

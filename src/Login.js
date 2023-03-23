@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
-import Home from "./Home";
 import {Button, Container} from "react-bootstrap";
+import Profile from "./Profile";
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
 const CLIENT_SECRET = "a0c007ed7ada4e0aa5eabfeb02a6ffc9";
@@ -44,6 +44,8 @@ function Login() {
             <h1>Kom maar inloggen!</h1>
             <Container>
                 <Button onClick={handleLogin}>Log In</Button>
+
+                <Profile></Profile>
             </Container>
         </div>
     );
