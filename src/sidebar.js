@@ -12,8 +12,8 @@ import './sidebar.css';
 
 const Sidebar = () => {
     return (
-        <div style={{display: 'flex', height: '1565px', overflow: 'scroll initial', float: "left"}}>
-            <CDBSidebar textColor="#fff" backgroundColor="#240208">
+        <div style={{display: 'flex', overflow: 'scroll initial', float: "left"}}>
+            <CDBSidebar height: '100vw' textColor="#fff" backgroundColor="#240208">
                 <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
                     <a href="/" className="text-decoration-none" style={{color: '#527141'}}>
                         Menu
@@ -45,15 +45,7 @@ const Sidebar = () => {
                     </CDBSidebarMenu>
                 </CDBSidebarContent>
 
-                <CDBSidebarFooter style={{textAlign: 'center'}}>
-                    <div
-                        style={{
-                            padding: '20px 5px',
-                        }}
-                    >
 
-                    </div>
-                </CDBSidebarFooter>
             </CDBSidebar>
         </div>
     );
