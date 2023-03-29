@@ -8,15 +8,15 @@
  
  ### Introduction
 Insecure design refers to a design approach that prioritizes ease of use and convenience over security. It is a problem that affects a wide range of systems. It can lead to serious security vulnerabilities that can be exposed by attackers to gain unauthorized access to sensitive data, ruin operations, or other forms of damage.
-The most common example of insecure design is the use of weak or easily guessable passwords. Passwords are often the most weak point of unauthorized access, but if they are too short, simple, or based on easily guessable information like a user's name or birthdate, they can be easily given away. Insecure password design can lead to account takeover, data theft, and other forms of dangerous activity 'A04:2021 – Insecure Design', [https://owasp.org/Top10/A04_2021-Insecure_Design/](https://owasp.org/Top10/A04_2021-Insecure_Design/).
+The most common example of insecure design is the use of weak or easily guessable passwords. Passwords are often the most weak point of unauthorized access, but if they are too short, simple, or based on easily guessable information like a user's name or birthdate, they can be easily given away. Insecure password design can lead to account takeover, data theft, and other forms of dangerous activity ***(A04 Insecure Design - OWASP Top 10:2021, n.d.)***.
 Another example is the failure to use encryption to protect sensitive data in transit and at rest. Encryption is a powerful tool for protecting data from unauthorized access, but it requires careful implementation and management to be effective. Insecure encryption design can lead to data leaks, identity theft, and other forms of cybercrime.
 It can also be seen in the design of physical devices, such as smart home devices and Internet of Things (IoT) devices. These devices often lack basic security features, such as strong passwords or encryption, and may be vulnerable to hacking or other forms of malicious activity. 
 Nevertheless, insecure design is often the result of a lack of emphasis on security during the design process. Designers and developers may prioritize ease of use, functionality, or other factors over security, leading to vulnerabilities that are difficult to address after the fact. To address the problem of insecure design, it is important to incorporate security considerations into the design process from the beginning. This can include conducting threat modeling exercises to identify potential security risks, implementing secure coding practices, and using secure design patterns and architectures.
-In addition to incorporating security into the design process, it is important to regularly test and audit systems for security vulnerabilities. This can include conducting penetration testing to identify weaknesses in systems and applications, as well as regularly monitoring systems for signs of compromise or unauthorized activity.
+In addition to incorporating security into the design process, it is important to regularly test and audit systems for security vulnerabilities. This can include conducting penetration testing to identify weaknesses in systems and applications, as well as regularly monitoring systems for signs of compromise or unauthorized activity ***(Crashtest Security, 2022)***.
 Ultimately, insecure design is a serious problem that can have far-reaching consequences. By prioritizing security in the design process and regularly testing and auditing systems for vulnerabilities, organizations can reduce the risk of security breaches and protect sensitive data from unauthorized access. To address insecure design, we can use the DOT framework research methodology.
 
 ### DOT Framework
-The DOT framework consists of three levels: The “What” of your research (the domains), The “Why” of your research (the trade-offs), and The “How” of your research (the strategies and methods)'The DOT Framework', [http://ictresearchmethods.nl/The_DOT_Framework.nl](http://ictresearchmethods.nl/The_DOT_Framework).
+The DOT framework consists of three levels: The “What” of your research (the domains), The “Why” of your research (the trade-offs), and The “How” of your research (the strategies and methods)***(The DOT Framework - ICT research methods, n.d.)***.
 The domains in insecure design are the areas where security controls are lacking. These areas include authentication, authorization, input validation, output encoding, error handling, logging and auditing.
 
 The trade-offs in insecure design are the risks associated with flaws in design and architecture. These risks include data breaches, data loss, unauthorized access to sensitive information, and more.
@@ -37,3 +37,10 @@ I am going to ensure that my app does not face any issues within Insecure Design
 - Dependencies up-to-date: Keeping my dependencies up-to-date to ensure that I am using the latest security patches.
 
 - Secure coding practices: Following secure coding practices such as input validation, output encoding, error handling, and logging and auditing.
+
+
+
+### Sources
+- A04 Insecure Design - OWASP Top 10:2021. (n.d.). https://owasp.org/Top10/A04_2021-Insecure_Design/
+- Crashtest Security. (2022, 26 oktober). OWASP A04:2021: Insecure Design Explained [Video]. YouTube. https://www.youtube.com/watch?v=2F1NzaWD0Wg
+- The DOT Framework - ICT research methods. (n.d.). http://ictresearchmethods.nl/The_DOT_Framework
