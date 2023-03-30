@@ -63,37 +63,34 @@ function SearchAlbum() {
         <div className="SearchAlbum">
             <h1 style={{color: 'white', margin: '5px'}}>Search any artists you like to see their albums!</h1>
 
-            <Container>
-                <InputGroup className="mb-3 d-flex" size="lg">
+            <div className="search-container">
+                <InputGroup className="mb-3 d-flex flex-grow-1">
                     <FormControl placeholder="Search For Artist" type="input" onKeyPress={event => {
                         if (event.key == "Enter") {
                             search();
                         }
-                    }}
-                                 onChange={event => setSearchInput(event.target.value)}>
-
+                    }} onChange={event => setSearchInput(event.target.value)}>
                     </FormControl>
                     <Button onClick={search}>Search</Button>
                 </InputGroup>
-            </Container>
-            <Container>
-                <Row className="mx-2 row row-cols-4">
-                    {albums.map((album, i) => {
-                        console.log(album);
-                        return (
-                            <Card>
-                                <Card.Img src={album.images[0].url}/>
-                                <Card.Body>
-                                    <Card.Title>
-                                        {album.name}
-                                    </Card.Title>
-                                </Card.Body>
-                            </Card>
-                        )
-                    })}
-                </Row>
+            </div>
 
-            </Container>
+
+            <Row className="mx-2 row row-cols-4">
+                {albums.map((album, i) => {
+                    console.log(album);
+                    return (
+                        <Card>
+                            <Card.Img src={album.images[0].url}/>
+                            <Card.Body>
+                                <Card.Title>
+                                    {album.name}
+                                </Card.Title>
+                            </Card.Body>
+                        </Card>
+                    )
+                })}
+            </Row>
         </div>
     );
 }
