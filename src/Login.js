@@ -42,11 +42,8 @@ function Login() {
     return (
         <div className="Login">
             <h1>Kom maar inloggen!</h1>
-            <Container>
-                <Button onClick={handleLogin}>Log In</Button>
-
-                <Profile></Profile>
-            </Container>
+            <Button onClick={handleLogin}>Log In</Button>
+            <Profile></Profile>
         </div>
     );
 }
