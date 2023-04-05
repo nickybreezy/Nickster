@@ -25,13 +25,15 @@ const Sidebar = () => {
                         <NavLink exact to="/" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="columns">Home</CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink exact to="/Player" activeClassName="activeClicked">
+                        {/* <NavLink exact to="/Player" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="music">Player</CDBSidebarMenuItem>
-                        </NavLink>
+                        </NavLink>*/}
                         <NavLink exact to="/Library" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="th-large">Library</CDBSidebarMenuItem>
                         </NavLink>
-
+                        <NavLink exact to="/SearchSongs" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="music">Search Songs</CDBSidebarMenuItem>
+                        </NavLink>
                         <NavLink exact to="/SearchAlbum" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="table">Search Albums</CDBSidebarMenuItem>
                         </NavLink>

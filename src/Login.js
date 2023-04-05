@@ -4,48 +4,27 @@ import Profile from "./Profile";
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
 const CLIENT_SECRET = "a0c007ed7ada4e0aa5eabfeb02a6ffc9";
-export const authEndpoint = "https://accounts.spotify.com/authorize";
-const REDIRECT_URL_AFTER_LOGIN = "http://localhost:3000/login";
-const SPACE_DELIMITER = "%20";
-const redirectUri = "http://localhost:3000/login";
-const scopes = ["user-read-currently-playing", "user-read-playback-state"];
-const SCOPES_URL_PARAM = scopes.join(SPACE_DELIMITER);
+/*export const authEndpoint = "https://accounts.spotify.com/authorize";
+const REDIRECT_URL_AFTER_LOGIN = "http://localhost:3000/searchsongs";*/
+const REDIRECT_URI = "http://localhost:3000";
+const ENCODED_REDIRECT_URI = encodeURIComponent(REDIRECT_URI);
 
-const getReturnedParamsFromSpotifyAuth = (hash) => {
-    const stringAfterHashtag = hash.substring(1);
-    const paramsInUrl = stringAfterHashtag.split("&");
-    const paramSplitUp = paramsInUrl.reduce((accumulater, currentValue) => {
-        console.log(currentValue);
-        const [key, value] = currentValue.split("=");
-        accumulater[key] = value;
-        return accumulater;
-    }, {});
+const AUTH_URL =
+    `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${ENCODED_REDIRECT_URI}&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
 
-    return paramSplitUp;
-};
-
-const handleLogin = () => {
-    window.location = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
-}
+/*
+const AUTH_URL =
+    "https://accounts.spotify.com/authorize?client_id=99e8f40ff31e4773afd9025afb9d63c2&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state"
+*/
 
 
-function Login() {
-    useEffect(() => {
-        if (window.location.hash) {
-            const {access_token, expires_in, token_type} = getReturnedParamsFromSpotifyAuth(window.location.hash);
-            localStorage.clear();
-            localStorage.setItem("accessToken", access_token);
-            localStorage.setItem("tokenType", token_type);
-            localStorage.setItem("expiresIn", expires_in);
-        }
-    }, []);
+export default function Login() {
     return (
-        <div className="Login">
-            <h1>Kom maar inloggen!</h1>
-            <Button onClick={handleLogin}>Log In</Button>
-            <Profile></Profile>
-        </div>
-    );
-}
 
-export default Login;
+        <div className="d-flex justify-content-center align-items-center">
+            <a className="btn btn-success btn-lg" href={AUTH_URL}>
+                Login With Spotify
+            </a>
+        </div>
+    )
+}
