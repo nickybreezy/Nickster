@@ -16,6 +16,7 @@ function SearchAlbum() {
     const [searchInput, setSearchInput] = useState("");
     const [accessToken, setAccessToken] = useState("");
     const [albums, setAlbums] = useState([]);
+
     useEffect(() => {
         //API access token
         var authParameters = {
