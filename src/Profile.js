@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Button, Card} from "react-bootstrap";
 import Player from "./Player";
+import {saveAs} from 'file-saver';
+
 
 const PLAYLISTS_ENDPOINT = "https://api.spotify.com/v1/me/playlists";
 
@@ -62,6 +64,30 @@ function Profile() {
             });
     };
 
+    const handleAddPlaylist = (playlist) => {
+        const data = {
+            id: playlist.id,
+            name: playlist.name,
+            description: playlist.description,
+        };
+
+        console.log('Data:', data);
+
+        fetch('http://localhost:3001/addPlaylist', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Playlist added:', data);
+            })
+            .catch((error) => {
+                console.error('Error adding playlist:', error);
+            });
+    };
 
     useEffect(() => {
         const storedToken = localStorage.getItem("accessToken");
@@ -81,14 +107,16 @@ function Profile() {
                         <Card.Img variant="top" src={playlist.images[0].url}/>
                         <Card.Body>
                             <Card.Title>{playlist.name}</Card.Title>
-                            <Button onClick={() => handlePlayPlaylist(playlist.id)}>
-                                Play
-                            </Button>
+                            <div className="d-flex justify-content-between">
+                                <Button onClick={() => handlePlayPlaylist(playlist.id)}>
+                                    Play
+                                </Button>
+                                <Button onClick={() => handleAddPlaylist(playlist)}>+</Button>
+                            </div>
                         </Card.Body>
                     </Card>
                 ))}
             </div>
-            <div><Player/></div>
             {error && <p>{error}</p>}
         </>
     );

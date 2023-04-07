@@ -12,7 +12,7 @@ import './sidebar.css';
 
 const Sidebar = () => {
     return (
-        <div style={{display: 'flex', overflow: 'scroll initial', float: "left", height: "100vw"}}>
+        <div style={{display: 'flex', overflow: 'scroll initial', float: "left", height: "200vh"}}>
             <CDBSidebar textColor="#fff" backgroundColor="#240208">
                 <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
                     <a href="/" className="text-decoration-none" style={{color: '#527141'}}>
@@ -31,7 +31,12 @@ const Sidebar = () => {
                         <NavLink exact to="/Library" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="th-large">Library</CDBSidebarMenuItem>
                         </NavLink>
-
+                        <NavLink exact to="/SearchSongs" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="search">Search Songs</CDBSidebarMenuItem>
+                        </NavLink>
+                        <NavLink exact to="/Manage" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="wrench">Manage</CDBSidebarMenuItem>
+                        </NavLink>
                         <NavLink exact to="/SearchAlbum" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="table">Search Albums</CDBSidebarMenuItem>
                         </NavLink>

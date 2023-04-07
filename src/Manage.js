@@ -7,8 +7,8 @@ import Profile from "./Profile";
 export default function Player() {
     return (
         <>
-            <h1>hello player</h1>
-
+            <h1>hello manager</h1>
+            <Profile/>
         </>
 
     )
