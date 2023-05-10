@@ -28,6 +28,10 @@ const handleLogin = () => {
     window.location = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
 }
 
+function handleLogout() {
+    localStorage.clear();
+    window.location.reload(); 
+  }
 
 function Login() {
     useEffect(() => {
@@ -41,10 +45,14 @@ function Login() {
     }, []);
     return (
         <div className="Login">
-            <h1>Kom maar inloggen!</h1>
-            <Button onClick={handleLogin}>Log In</Button>
-            <Profile></Profile>
-        </div>
+      <h1>Kom maar inloggen!</h1>
+      {localStorage.getItem("accessToken") ? (
+        <Button onClick={handleLogout}>Log Out</Button>
+      ) : (
+        <Button onClick={handleLogin}>Log In</Button>
+      )}
+      <Profile />
+    </div>
     );
 }
 

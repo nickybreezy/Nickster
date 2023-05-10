@@ -5,7 +5,7 @@ import Player from "./Player";
 import {saveAs} from 'file-saver';
 
 
-const PLAYLISTS_ENDPOINT = "https://api.spotify.com/v1/me/playlists";
+const PLAYLISTS_ENDPOINT = "https://api.spotify.com/v1/me/playlists?limit=50";
 
 function Profile() {
     const [token, setToken] = useState("");
