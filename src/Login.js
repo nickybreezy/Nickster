@@ -35,12 +35,11 @@ function handleLogout() {
   window.location.reload(); 
 }
 
-  const handleSwitchAccounts = () => {
     const handleSwitchAccounts = () => {
       localStorage.clear();
       window.location = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
     };
-  }
+  
 
 function Login() {
     useEffect(() => {
