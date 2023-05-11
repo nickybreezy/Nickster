@@ -35,7 +35,6 @@ function handleLogout() {
   window.location.reload(); 
 }
 
-
   const handleSwitchAccounts = () => {
     const handleSwitchAccounts = () => {
       localStorage.clear();
