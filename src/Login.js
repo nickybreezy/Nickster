@@ -33,6 +33,10 @@ function handleLogout() {
     window.location.reload(); 
   }
 
+  const handleSwitchAccounts = () => {
+    handleLogout();
+  }
+
 function Login() {
     useEffect(() => {
         if (window.location.hash) {
@@ -44,16 +48,19 @@ function Login() {
         }
     }, []);
     return (
-        <div className="Login">
-      <h1>Kom maar inloggen!</h1>
-      {localStorage.getItem("accessToken") ? (
-        <Button onClick={handleLogout}>Log Out</Button>
-      ) : (
-        <Button onClick={handleLogin}>Log In</Button>
-      )}
-      <Profile />
-    </div>
+      <div className="Login">
+        <h1>Kom maar inloggen!</h1>
+        {localStorage.getItem("accessToken") ? (
+          <div>
+            <Button onClick={handleLogout}>Log Out</Button>
+            <Button onClick={handleSwitchAccounts}>Switch Accounts</Button>
+          </div>
+        ) : (
+          <Button onClick={handleLogin}>Log In</Button>
+        )}
+        <Profile />
+      </div>
     );
-}
+  }
 
 export default Login;
