@@ -16,7 +16,6 @@ function Profile() {
     useEffect(() => {
         const storedToken = localStorage.getItem("accessToken");
         if (storedToken) {
-            setToken(storedToken);
         }
     }, []);
 
