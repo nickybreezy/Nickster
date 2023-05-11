@@ -29,9 +29,12 @@ const handleLogin = () => {
 }
 
 function handleLogout() {
-    localStorage.clear();
-    window.location.reload(); 
-  }
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("tokenType");
+  localStorage.removeItem("expiresIn");
+  window.location.reload(); 
+}
+
 
   const handleSwitchAccounts = () => {
     handleLogout();
