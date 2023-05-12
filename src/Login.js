@@ -27,6 +27,8 @@ const getReturnedParamsFromSpotifyAuth = (hash) => {
 const handleLogin = () => {
     window.location = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
 }
+//Q:test this with logout button
+//A; it works
 
 function handleLogout() {
   localStorage.removeItem("accessToken");
@@ -35,11 +37,20 @@ function handleLogout() {
   window.location.reload(); 
 }
 
+<<<<<<< HEAD
+
+const handleSwitchAccounts = () => {
+  localStorage.clear();
+  window.location = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
+};
+
+=======
     const handleSwitchAccounts = () => {
       localStorage.clear();
       window.location = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
     };
   
+>>>>>>> 16e286138b7647e34bf6316443b989d03507f24a
 
 function Login() {
     useEffect(() => {
