@@ -8,7 +8,9 @@ export const authEndpoint = "https://accounts.spotify.com/authorize";
 const REDIRECT_URL_AFTER_LOGIN = "http://localhost:3000/login";
 const SPACE_DELIMITER = "%20";
 const redirectUri = "http://localhost:3000/login";
-const scopes = ["user-read-currently-playing", "user-read-playback-state"];
+const scopes = ["user-read-currently-playing", "user-read-playback-state", "streaming",
+"user-read-email",
+"user-read-private"];
 const SCOPES_URL_PARAM = scopes.join(SPACE_DELIMITER);
 
 const getReturnedParamsFromSpotifyAuth = (hash) => {
@@ -30,27 +32,23 @@ const handleLogin = () => {
 //Q:test this with logout button
 //A; it works
 
-function handleLogout() {
-  localStorage.removeItem("accessToken");
-  localStorage.removeItem("tokenType");
-  localStorage.removeItem("expiresIn");
-  window.location.reload(); 
-}
+const handleLogout = () => {
+  localStorage.clear();
+  window.location.href = '/login'; // redirect to login page
+};
 
-<<<<<<< HEAD
+
 
 const handleSwitchAccounts = () => {
   localStorage.clear();
-  window.location = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
+  const url = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
+  console.log(url);
+  window.location.href = url;
 };
 
-=======
-    const handleSwitchAccounts = () => {
-      localStorage.clear();
-      window.location = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
-    };
-  
->>>>>>> 16e286138b7647e34bf6316443b989d03507f24a
+
+
+
 
 function Login() {
     useEffect(() => {
