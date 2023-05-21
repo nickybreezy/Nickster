@@ -42,5 +42,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.33.0",
+    "checkly": "latest",
+    "jest": "^27.5.1",
+    "playwright": "^1.33.0",
+    "ts-node": "latest",
+    "typescript": "latest"
   }
 }
