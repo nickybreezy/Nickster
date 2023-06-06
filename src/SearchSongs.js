@@ -2,11 +2,12 @@ import './App.css';
 import './SearchAlbum.css'
 import { useMediaQuery } from 'react-responsive';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
+import { Container, InputGroup, FormControl, Button, Row, Card, Col } from 'react-bootstrap';
 import React, { useState, useEffect } from "react";
 import { Route, Link, Router, BrowserRouter, Routes } from "react-router-dom";
 import axios from "axios";
 import { saveAs } from 'file-saver';
+import Player from './Player';
 
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
@@ -111,6 +112,7 @@ function SearchSongs() {
 
                 if (!previewUrl) {
                     console.log("Preview not available");
+                    alert("Preview not available for this song.");
                     return;
                 }
 
@@ -150,23 +152,29 @@ function SearchSongs() {
                 </InputGroup>
             </div>
 
-            <Row className={`mx-2 ${isMobile ? '' : 'row-cols-4'}`}>
+            <Row className={`mx-1 ${isMobile ? '' : 'row-cols-4'} g-4`}>
                 {tracks.map((track, i) => {
                     return (
-                        <Card key={i} >
-                            {<Card.Img src={track.album.images[0].url} />}
-                            <Card.Body className="custom-card-body">
+                        <Col>
+                            <Card key={i} className="custom-card"  >
+                                {<Card.Img src={track.album.images[0].url} />}
+                                <Card.Body className="custom-card-body">
 
-                                <Card.Title>{track.name}</Card.Title>
-                                <Button className="custom-button" onClick={() => handlePlayTrack(track.id)} >
-                                    ▶
-                                </Button>
-                                <Button className="custom-button" onClick={() => downloadSong(track.id)}>Download ⬇️</Button>
-                            </Card.Body>
-                        </Card>
+                                    <Card.Title>{track.name}</Card.Title>
+                                    <Button className="custom-button" onClick={() => handlePlayTrack(track.id)} >
+                                        ▶
+                                    </Button>
+                                    <Button className="custom-button" onClick={() => downloadSong(track.id)}>Download ⬇️</Button>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+
                     );
                 })}
             </Row>
+            <div className="bottom-bar">
+                Player here
+            </div>
         </div>
 
     );

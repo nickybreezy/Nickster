@@ -2,10 +2,23 @@
 
 .custom-card-body {
     background-color: #4a0410;
-    --bs-card-bg: green !important;
+    justify-content: center;
     color: #cccccc;
     border: none !important;
 
+}
+
+.custom-card {
+    max-width: 300px;
+    background-color: var(--bs-card-bg) !important;
+    --bs-card-bg: #4a0410 !important;
+}
+
+.custom-card .card-title {
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .custom-button {
@@ -14,4 +27,13 @@
     --bs-btn-border-color: #b40000;
     --bs-btn-hover-bg: #ff2100;
     --bs-btn-hover-border-color: #cc1a00;
+}
+
+.bottom-bar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 20px;
 }
