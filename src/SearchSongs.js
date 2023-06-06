@@ -7,7 +7,8 @@ import React, { useState, useEffect } from "react";
 import { Route, Link, Router, BrowserRouter, Routes } from "react-router-dom";
 import axios from "axios";
 import { saveAs } from 'file-saver';
-import SpotifyWebApi from "spotify-web-api-node";
+import Player from './Player';
+
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
 const CLIENT_SECRET = "a0c007ed7ada4e0aa5eabfeb02a6ffc9";
@@ -129,9 +130,6 @@ function SearchSongs() {
             });
     };
 
-    const spotifyApi = new SpotifyWebApi({
-        clientId: CLIENT_ID,
-    });
 
     return (
         <div className="SearchAlbum">
@@ -172,6 +170,9 @@ function SearchSongs() {
                     );
                 })}
             </Row>
+            <div className="bottom-bar">
+                Player here
+            </div>
         </div>
 
     );
