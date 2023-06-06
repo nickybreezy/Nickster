@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Link, Router, BrowserRouter, Routes } from "react-router-dom";
 import axios from "axios";
 import { saveAs } from 'file-saver';
+import SpotifyWebApi from "spotify-web-api-node";
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
 const CLIENT_SECRET = "a0c007ed7ada4e0aa5eabfeb02a6ffc9";
@@ -36,7 +37,7 @@ function SearchSongs() {
 
     //Search
     async function search() {
-        console.log("Search for " + searchInput);
+        console.log("Search for " + searchInput + " using access token " + accessToken);
         // Get request using search to get the Track IDs
         var searchParameters = {
             method: "GET",
@@ -95,6 +96,8 @@ function SearchSongs() {
             console.error(error);
         }
     }
+
+    // npm i react-spotify-web-playback
 
     const handlePlayTrack = (trackId) => {
         axios
