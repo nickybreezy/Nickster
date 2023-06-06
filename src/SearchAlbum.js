@@ -67,7 +67,7 @@ function SearchAlbum() {
     const isMobile = useMediaQuery({ maxWidth: 869 });
     return (
         <div className="SearchAlbum">
-            <h1 style={{ color: 'white', margin: '5px' }}>Search any artists you like to see their albums!</h1>
+            <h1 style={{ color: 'white' }}>Search any artists you like to see their albums!</h1>
 
             <div className="search-container">
                 <InputGroup className="mb-3 d-flex flex-grow-1">
@@ -88,7 +88,7 @@ function SearchAlbum() {
                     return (
                         <Card className="custom-card">
                             <Card.Img src={album.images[0].url} />
-                            <Card.Body>
+                            <Card.Body className="custom-card-body">
                                 <Card.Title>
                                     {album.name}
                                 </Card.Title>

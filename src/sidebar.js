@@ -7,15 +7,15 @@ import {
     CDBSidebarMenu,
     CDBSidebarMenuItem,
 } from 'cdbreact';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './sidebar.css';
 
 const Sidebar = () => {
     return (
-        <div style={{display: 'flex', overflow: 'scroll initial', float: "left", height: "200vh"}}>
+        <div style={{ display: 'flex', overflow: 'scroll initial', float: "left", height: "200vh" }}>
             <CDBSidebar textColor="#fff" backgroundColor="#240208">
                 <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-                    <a href="/" className="text-decoration-none" style={{color: '#527141'}}>
+                    <a href="/" className="text-decoration-none" style={{ color: '#527141' }}>
                         Menu
                     </a>
                 </CDBSidebarHeader>

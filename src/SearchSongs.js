@@ -172,9 +172,9 @@ function SearchSongs() {
                     );
                 })}
             </Row>
-            <div className="bottom-bar">
+            {/* <div className="bottom-bar">
                 Player here
-            </div>
+            </div> */}
         </div>
 
     );
