@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import {Button, Container} from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Button, Container } from "react-bootstrap";
 import Profile from "./Profile";
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
@@ -9,25 +9,25 @@ const REDIRECT_URL_AFTER_LOGIN = "http://localhost:3000/login";
 const SPACE_DELIMITER = "%20";
 const redirectUri = "http://localhost:3000/login";
 const scopes = ["user-read-currently-playing", "user-read-playback-state", "streaming",
-"user-read-email",
-"user-read-private"];
+  "user-read-email",
+  "user-read-private"];
 const SCOPES_URL_PARAM = scopes.join(SPACE_DELIMITER);
 
 const getReturnedParamsFromSpotifyAuth = (hash) => {
-    const stringAfterHashtag = hash.substring(1);
-    const paramsInUrl = stringAfterHashtag.split("&");
-    const paramSplitUp = paramsInUrl.reduce((accumulater, currentValue) => {
-        console.log(currentValue);
-        const [key, value] = currentValue.split("=");
-        accumulater[key] = value;
-        return accumulater;
-    }, {});
+  const stringAfterHashtag = hash.substring(1);
+  const paramsInUrl = stringAfterHashtag.split("&");
+  const paramSplitUp = paramsInUrl.reduce((accumulater, currentValue) => {
+    console.log(currentValue);
+    const [key, value] = currentValue.split("=");
+    accumulater[key] = value;
+    return accumulater;
+  }, {});
 
-    return paramSplitUp;
+  return paramSplitUp;
 };
 
 const handleLogin = () => {
-    window.location = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
+  window.location = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true}`;
 }
 //Q:test this with logout button
 //A; it works
@@ -51,29 +51,29 @@ const handleSwitchAccounts = () => {
 
 
 function Login() {
-    useEffect(() => {
-        if (window.location.hash) {
-            const {access_token, expires_in, token_type} = getReturnedParamsFromSpotifyAuth(window.location.hash);
-            localStorage.clear();
-            localStorage.setItem("accessToken", access_token);
-            localStorage.setItem("tokenType", token_type);
-            localStorage.setItem("expiresIn", expires_in);
-        }
-    }, []);
-    return (
-      <div className="Login">
-        <h1>Kom maar inloggen!</h1>
-        {localStorage.getItem("accessToken") ? (
-          <div>
-            <Button onClick={handleLogout}>Log Out</Button>
-            <Button onClick={handleSwitchAccounts}>Switch Accounts</Button>
-          </div>
-        ) : (
-          <Button onClick={handleLogin}>Log In</Button>
-        )}
-        <Profile />
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (window.location.hash) {
+      const { access_token, expires_in, token_type } = getReturnedParamsFromSpotifyAuth(window.location.hash);
+      localStorage.clear();
+      localStorage.setItem("accessToken", access_token);
+      localStorage.setItem("tokenType", token_type);
+      localStorage.setItem("expiresIn", expires_in);
+    }
+  }, []);
+  return (
+    <div className="Login">
+      <h1>Come and login with your own Spotify account!</h1>
+      {localStorage.getItem("accessToken") ? (
+        <div>
+          <Button onClick={handleLogout}>Log Out</Button>
+          <Button onClick={handleSwitchAccounts}>Switch Accounts</Button>
+        </div>
+      ) : (
+        <Button onClick={handleLogin}>Log In</Button>
+      )}
+      <Profile />
+    </div>
+  );
+}
 
 export default Login;
