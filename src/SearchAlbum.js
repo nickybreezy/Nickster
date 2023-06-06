@@ -1,14 +1,14 @@
 import './App.css';
 import './SearchAlbum.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, InputGroup, FormControl, Button, Row, Card} from 'react-bootstrap';
-import React, {useState, useEffect} from "react";
+import { Container, InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
 import Home from './Home'
 import Login from "./Login";
 import App from "./App";
-import {Route, Link, Router, BrowserRouter, Routes} from "react-router-dom";
+import { Route, Link, Router, BrowserRouter, Routes } from "react-router-dom";
 import axios from "axios";
-import {saveAs} from 'file-saver';
+import { saveAs } from 'file-saver';
 
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
@@ -63,34 +63,10 @@ function SearchAlbum() {
         console.log(albums);
     }
 
-    // const handleDownloadSong = (playlistId, trackId) => {
-    //
-    //     axios({
-    //         url: `https://api.spotify.com/v1/albums/${album.id}/tracks`,
-    //         method: 'get',
-    //         headers: {
-    //             'Authorization': 'Bearer ' + accessToken
-    //         },
-    //         responseType: 'json'
-    //     })
-    //         .then(response => {
-    //             const trackUrl = response.data.items[0].preview_url;
-    //             axios({
-    //                 url: trackUrl,
-    //                 method: 'get',
-    //                 responseType: 'blob'
-    //             })
-    //                 .then(response => {
-    //                     const file = new File([response.data], `${album.name}.mp3`, {type: 'audio/mp3'});
-    //                     saveAs(file);
-    //                 });
-    //         });
-    // };
-
 
     return (
         <div className="SearchAlbum">
-            <h1 style={{color: 'white', margin: '5px'}}>Search any artists you like to see their albums!</h1>
+            <h1 style={{ color: 'white', margin: '5px' }}>Search any artists you like to see their albums!</h1>
 
             <div className="search-container">
                 <InputGroup className="mb-3 d-flex flex-grow-1">
@@ -110,12 +86,12 @@ function SearchAlbum() {
                     console.log(album);
                     return (
                         <Card>
-                            <Card.Img src={album.images[0].url}/>
+                            <Card.Img src={album.images[0].url} />
                             <Card.Body>
                                 <Card.Title>
                                     {album.name}
                                 </Card.Title>
-                                <Button onClick={() => {
+                                <Button className="custom-button" onClick={() => {
                                     axios({
                                         url: `https://api.spotify.com/v1/albums/${album.id}/tracks`,
                                         method: 'get',
@@ -132,7 +108,7 @@ function SearchAlbum() {
                                                 responseType: 'blob'
                                             })
                                                 .then(response => {
-                                                    const file = new File([response.data], `${album.name}.mp3`, {type: 'audio/mp3'});
+                                                    const file = new File([response.data], `${album.name}.mp3`, { type: 'audio/mp3' });
                                                     saveAs(file);
                                                 });
                                         });

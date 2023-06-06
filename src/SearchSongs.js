@@ -1,11 +1,12 @@
 import './App.css';
 import './SearchAlbum.css'
+import { useMediaQuery } from 'react-responsive';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, InputGroup, FormControl, Button, Row, Card} from 'react-bootstrap';
-import React, {useState, useEffect} from "react";
-import {Route, Link, Router, BrowserRouter, Routes} from "react-router-dom";
+import { Container, InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { Route, Link, Router, BrowserRouter, Routes } from "react-router-dom";
 import axios from "axios";
-import {saveAs} from 'file-saver';
+import { saveAs } from 'file-saver';
 
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
@@ -37,7 +38,7 @@ function SearchSongs() {
     //Search
     async function search() {
         console.log("Search for " + searchInput);
-// Get request using search to get the Track IDs
+        // Get request using search to get the Track IDs
         var searchParameters = {
             method: "GET",
             headers: {
@@ -52,7 +53,7 @@ function SearchSongs() {
                 return data.tracks.items.map((item) => item.id);
             });
 
-// Get request using the Track IDs to get the Track Details
+        // Get request using the Track IDs to get the Track Details
         var trackDetails = await Promise.all(
             trackIDs.map(async (trackID) => {
                 var trackParameters = {
@@ -70,17 +71,18 @@ function SearchSongs() {
 
         console.log("Track Details", trackDetails);
 
-// Update the tracks state with the search result
+        // Update the tracks state with the search result
         setTracks(trackDetails);
 
     }
+    const isMobile = useMediaQuery({ maxWidth: 869 }); // Set the breakpoint for mobile devices
 
     async function downloadSong(trackId) {
         console.log("Download song with track ID: " + trackId);
 
         const url = `https://api.spotify.com/v1/tracks/${trackId}`;
         const config = {
-            headers: {Authorization: `Bearer ${accessToken}`}
+            headers: { Authorization: `Bearer ${accessToken}` }
         };
 
         try {
@@ -88,9 +90,8 @@ function SearchSongs() {
             const data = response.data;
             const audioBlob = await fetch(data.preview_url).then(r => r.blob()); // Convert audio URL to blob
             const trackName = data.name;
-
-            // Download the song using the file-saver library
             saveAs(audioBlob, `${trackName}.mp3`);
+            alert(`Song "${trackName}" has been downloaded successfully!`);
         } catch (error) {
             console.error(error);
         }
@@ -129,7 +130,7 @@ function SearchSongs() {
 
     return (
         <div className="SearchAlbum">
-            <h1 style={{color: "white", margin: "5px"}}>
+            <h1 style={{ color: "white" }}>
                 Search any song you like!
             </h1>
 
@@ -149,17 +150,18 @@ function SearchSongs() {
                 </InputGroup>
             </div>
 
-            <Row className="mx-2 row row-cols-4">
+            <Row className={`mx-2 ${isMobile ? '' : 'row-cols-4'}`}>
                 {tracks.map((track, i) => {
                     return (
-                        <Card key={i}>
-                            {<Card.Img src={track.album.images[0].url}/>}
-                            <Card.Body>
+                        <Card key={i} >
+                            {<Card.Img src={track.album.images[0].url} />}
+                            <Card.Body className="custom-card-body">
+
                                 <Card.Title>{track.name}</Card.Title>
-                                <Button onClick={() => handlePlayTrack(track.id)}>
-                                    Play
+                                <Button className="custom-button" onClick={() => handlePlayTrack(track.id)} >
+                                    ▶
                                 </Button>
-                                <Button onClick={() => downloadSong(track.id)}>Download</Button>
+                                <Button className="custom-button" onClick={() => downloadSong(track.id)}>Download ⬇️</Button>
                             </Card.Body>
                         </Card>
                     );

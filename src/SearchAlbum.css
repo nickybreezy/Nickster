@@ -1,4 +1,17 @@
-.SearchAlbum {
+.SearchAlbum {}
+
+.custom-card-body {
+    background-color: #4a0410;
+    --bs-card-bg: green !important;
+    color: #cccccc;
+    border: none !important;
 
 }
 
+.custom-button {
+    margin-left: 10px;
+    --bs-btn-bg: #e80000;
+    --bs-btn-border-color: #b40000;
+    --bs-btn-hover-bg: #ff2100;
+    --bs-btn-hover-border-color: #cc1a00;
+}
