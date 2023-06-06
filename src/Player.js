@@ -6,8 +6,11 @@ import Profile from "./Profile";
 
 export default function Player() {
     return (
-        <div className="bottom-bar">
-            Player here
-        </div>
-    );
+        <>
+            <h1>Player</h1>
+
+        </>
+
+    )
+
 }
