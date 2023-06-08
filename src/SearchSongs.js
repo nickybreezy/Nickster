@@ -111,6 +111,7 @@ function SearchSongs() {
 
                 if (!previewUrl) {
                     console.log("Preview not available");
+                    alert("Preview not available for this song.");
                     return;
                 }
 
@@ -150,20 +151,22 @@ function SearchSongs() {
                 </InputGroup>
             </div>
 
-            <Row className={`mx-2 ${isMobile ? '' : 'row-cols-4'}`}>
+            <Row className={`mx-1 ${isMobile ? '' : 'row-cols-4'} g-4`}>
                 {tracks.map((track, i) => {
                     return (
-                        <Card key={i} >
-                            {<Card.Img src={track.album.images[0].url} />}
-                            <Card.Body className="custom-card-body">
+                        <Col>
+                            <Card key={i} className="custom-card"  >
+                                {<Card.Img src={track.album.images[0].url} />}
+                                <Card.Body className="custom-card-body">
 
-                                <Card.Title>{track.name}</Card.Title>
-                                <Button className="custom-button" onClick={() => handlePlayTrack(track.id)} >
-                                    ▶
-                                </Button>
-                                <Button className="custom-button" onClick={() => downloadSong(track.id)}>Download ⬇️</Button>
-                            </Card.Body>
-                        </Card>
+                                    <Card.Title>{track.name}</Card.Title>
+                                    <Button className="custom-button" onClick={() => handlePlayTrack(track.id)} >
+                                        ▶
+                                    </Button>
+                                    <Button className="custom-button" onClick={() => downloadSong(track.id)}>Download ⬇️</Button>
+                                </Card.Body>
+                            </Card>
+                        </Col>
                     );
                 })}
             </Row>

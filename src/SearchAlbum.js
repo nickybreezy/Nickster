@@ -64,7 +64,7 @@ function SearchAlbum() {
         console.log(albums);
     }
 
-
+    const isMobile = useMediaQuery({ maxWidth: 869 });
     return (
         <div className="SearchAlbum">
             <h1 style={{ color: 'white' }}>Search any artists you like to see their albums!</h1>
@@ -82,11 +82,11 @@ function SearchAlbum() {
             </div>
 
 
-            <Row className="mx-2 row row-cols-4">
+            <Row className={`mx-1 ${isMobile ? '' : 'row-cols-4'} g-4`}>
                 {albums.map((album, i) => {
                     console.log(album);
                     return (
-                        <Card>
+                        <Card className="custom-card">
                             <Card.Img src={album.images[0].url} />
                             <Card.Body className="custom-card-body">
                                 <Card.Title>
