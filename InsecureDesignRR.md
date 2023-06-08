@@ -42,5 +42,5 @@ I am going to ensure that my app does not face any issues within Insecure Design
 
 ### Sources
 - A04 Insecure Design - OWASP Top 10:2021. (n.d.). https://owasp.org/Top10/A04_2021-Insecure_Design/
-- Crashtest Security. (2022, 26 oktober). OWASP A04:2021: Insecure Design Explained [Video]. YouTube. https://www.youtube.com/watch?v=2F1NzaWD0Wg
+- Crashtest Security. (2022, 26 october). OWASP A04:2021: Insecure Design Explained [Video]. YouTube. https://www.youtube.com/watch?v=2F1NzaWD0Wg
 - The DOT Framework - ICT research methods. (n.d.). http://ictresearchmethods.nl/The_DOT_Framework
