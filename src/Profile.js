@@ -42,7 +42,6 @@ function Profile() {
                 }
             });
     }
-    //console.log(data);
     const handlePlayPlaylist = (playlistId) => {
         axios
             .get(
@@ -63,6 +62,7 @@ function Profile() {
                 console.log(error);
             });
     };
+
 
     const handleAddPlaylist = (playlist) => {
         const data = {

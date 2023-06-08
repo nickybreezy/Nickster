@@ -2,7 +2,6 @@ import React from 'react';
 import {
     CDBSidebar,
     CDBSidebarContent,
-    CDBSidebarFooter,
     CDBSidebarHeader,
     CDBSidebarMenu,
     CDBSidebarMenuItem,
@@ -24,9 +23,6 @@ const Sidebar = () => {
                     <CDBSidebarMenu>
                         <NavLink exact to="/" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="columns">Home</CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink exact to="/Player" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="music">Player</CDBSidebarMenuItem>
                         </NavLink>
                         <NavLink exact to="/Library" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="th-large">Library</CDBSidebarMenuItem>

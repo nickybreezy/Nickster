@@ -1,18 +1,15 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, InputGroup, FormControl, Button, Row, Card} from 'react-bootstrap';
-import {useState, useEffect} from "react";
 import Home from './Home'
 import Login from "./Login";
 import SearchAlbum from "./SearchAlbum";
 import Profile from "./Profile";
-import {Route, Link, Router, BrowserRouter, Routes} from "react-router-dom";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Title from './Title';
 import Manage from './Manage';
-import React from 'react';
 import Library from './Library';
-import Player from './Player';
-import logo from './logo.svg';
+
+
 import Sidebar from './sidebar';
 import "./fonts/Warownia.otf";
 import './sidebar.css';
@@ -24,20 +21,19 @@ const CLIENT_SECRET = "a0c007ed7ada4e0aa5eabfeb02a6ffc9";
 function App() {
     return (
         <div className="App">
-            <Title/>
+            <Title />
             <div className="box">
 
                 <BrowserRouter>
-                    <Sidebar/>
+                    <Sidebar />
                     <Routes className="routes">
-                        <Route path="/" element={<Home/>}/>
-                        <Route exact path="/login" element={<Login/>}/>
-                        <Route exact path="/manage" element={<Manage/>}/>
-                        <Route exact path="/searchsongs" element={<SearchSongs/>}/>
-                        <Route exact path="/library" element={<Library/>}/>
-                        <Route exact path="/player" element={<Player/>}/>
-                        <Route exact path="/searchalbum" element={<SearchAlbum/>}/>
-                        <Route exact path="/profile" element={<Profile/>}/>
+                        <Route path="/" element={<Home />} />
+                        <Route exact path="/login" element={<Login />} />
+                        <Route exact path="/manage" element={<Manage />} />
+                        <Route exact path="/searchsongs" element={<SearchSongs />} />
+                        <Route exact path="/library" element={<Library />} />
+                        <Route exact path="/searchalbum" element={<SearchAlbum />} />
+                        <Route exact path="/profile" element={<Profile />} />
                     </Routes>
 
                 </BrowserRouter>

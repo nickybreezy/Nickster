@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import Profile from "./Profile";
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
