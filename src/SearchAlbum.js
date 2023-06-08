@@ -2,12 +2,8 @@ import './App.css';
 import './SearchAlbum.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useMediaQuery } from 'react-responsive';
-import { Container, InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
+import { InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
 import React, { useState, useEffect } from "react";
-import Home from './Home'
-import Login from "./Login";
-import App from "./App";
-import { Route, Link, Router, BrowserRouter, Routes } from "react-router-dom";
 import axios from "axios";
 import { saveAs } from 'file-saver';
 
@@ -72,7 +68,7 @@ function SearchAlbum() {
             <div className="search-container">
                 <InputGroup className="mb-3 d-flex flex-grow-1">
                     <FormControl placeholder="Search For Artist" type="input" onKeyPress={event => {
-                        if (event.key == "Enter") {
+                        if (event.key === "Enter") {
                             search();
                         }
                     }} onChange={event => setSearchInput(event.target.value)}>

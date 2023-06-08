@@ -2,12 +2,11 @@ import './App.css';
 import './SearchAlbum.css'
 import { useMediaQuery } from 'react-responsive';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, InputGroup, FormControl, Button, Row, Card, Col } from 'react-bootstrap';
+import { InputGroup, FormControl, Button, Row, Card, Col } from 'react-bootstrap';
 import React, { useState, useEffect } from "react";
-import { Route, Link, Router, BrowserRouter, Routes } from "react-router-dom";
 import axios from "axios";
 import { saveAs } from 'file-saver';
-import Player from './Player';
+
 
 
 const CLIENT_ID = "99e8f40ff31e4773afd9025afb9d63c2";
@@ -17,9 +16,8 @@ const CLIENT_SECRET = "a0c007ed7ada4e0aa5eabfeb02a6ffc9";
 function SearchSongs() {
     const [searchInput, setSearchInput] = useState("");
     const [accessToken, setAccessToken] = useState("");
-    const [albums, setAlbums] = useState([]);
     const [tracks, setTracks] = useState([]);
-    const [isPlaying, setIsPlaying] = useState(false);
+
 
 
     useEffect(() => {
@@ -142,7 +140,7 @@ function SearchSongs() {
                         placeholder="Search For Songs"
                         type="input"
                         onKeyPress={(event) => {
-                            if (event.key == "Enter") {
+                            if (event.key === "Enter") {
                                 search();
                             }
                         }}
