@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Button, Card } from "react-bootstrap";
-import Player from "./Player";
-import { saveAs } from 'file-saver';
-
+import { Button, Card, Col, Row } from "react-bootstrap";
+import './SearchAlbum.css'
+import { useMediaQuery } from 'react-responsive';
 
 const PLAYLISTS_ENDPOINT = "https://api.spotify.com/v1/me/playlists?limit=50";
 
@@ -99,26 +98,29 @@ function Profile() {
         }
     }, []);
 
-
+    const isMobile = useMediaQuery({ maxWidth: 869 });
     return (
         <>
             <Button onClick={handleGetPlaylists}>View my Playlists</Button>
-            <div className="d-flex flex-wrap justify-content-center mt-3">
+            <Row className={`mx-1 ${isMobile ? '' : 'row-cols-4'} g-4`}>
                 {data.map((playlist) => (
-                    <Card key={playlist.id} className="m-2" style={{ width: "18rem" }}>
-                        <Card.Img variant="top" src={playlist.images[0].url} />
-                        <Card.Body>
-                            <Card.Title>{playlist.name}</Card.Title>
-                            <div className="d-flex justify-content-between">
-                                <Button className="custom-button" onClick={() => handlePlayPlaylist(playlist.id)}>
-                                    Play
-                                </Button>
-                                <Button className="custom-button" onClick={() => handleAddPlaylist(playlist)}>+</Button>
-                            </div>
-                        </Card.Body>
-                    </Card>
+                    <Col>
+                        <Card key={playlist.id} className="custom-card" >
+                            <Card.Img variant="top" src={playlist.images[0].url} />
+                            <Card.Body>
+                                <Card.Title>{playlist.name}</Card.Title>
+                                <div className="d-flex justify-content-between">
+                                    <Button className="custom-button" onClick={() => handlePlayPlaylist(playlist.id)}>
+                                        Play
+                                    </Button>
+                                    <Button className="custom-button" onClick={() => handleAddPlaylist(playlist)}>+</Button>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+
                 ))}
-            </div>
+            </Row>
             {error && <p>{error}</p>}
         </>
     );

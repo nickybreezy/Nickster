@@ -3,9 +3,8 @@ import './SearchAlbum.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useMediaQuery } from 'react-responsive';
-import { InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
 
-import { Container, InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
+import { InputGroup, FormControl, Button, Row, Card, Col } from 'react-bootstrap';
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -86,36 +85,37 @@ function SearchAlbum() {
                 {albums.map((album, i) => {
                     console.log(album);
                     return (
-                        <Card className="custom-card">
-                            <Card.Img src={album.images[0].url} />
-                            <Card.Body className="custom-card-body">
-                                <Card.Title>
-                                    {album.name}
-                                </Card.Title>
-                                <Button className="custom-button" onClick={() => {
-                                    axios({
-                                        url: `https://api.spotify.com/v1/albums/${album.id}/tracks`,
-                                        method: 'get',
-                                        headers: {
-                                            'Authorization': 'Bearer ' + accessToken
-                                        },
-                                        responseType: 'json'
-                                    })
-                                        .then(response => {
-                                            const trackUrl = response.data.items[0].preview_url;
-                                            axios({
-                                                url: trackUrl,
-                                                method: 'get',
-                                                responseType: 'blob'
-                                            })
-                                                .then(response => {
-                                                    const file = new File([response.data], `${album.name}.mp3`, { type: 'audio/mp3' });
-                                                    saveAs(file);
-                                                });
-                                        });
-                                }}>Download</Button>
-                            </Card.Body>
-                        </Card>
+                        <Col>
+                            <Card className="custom-card">
+                                <Card.Img src={album.images[0].url} />
+                                <Card.Body className="custom-card-body">
+                                    <Card.Title>
+                                        {album.name}
+                                    </Card.Title>
+                                    <Button className="custom-button" onClick={() => {
+                                        axios({
+                                            url: `https://api.spotify.com/v1/albums/${album.id}/tracks`,
+                                            method: 'get',
+                                            headers: {
+                                                'Authorization': 'Bearer ' + accessToken
+                                            },
+                                            responseType: 'json'
+                                        })
+                                            .then(response => {
+                                                const trackUrl = response.data.items[0].preview_url;
+                                                axios({
+                                                    url: trackUrl,
+                                                    method: 'get',
+                                                    responseType: 'blob'
+                                                })
+                                                    .then(response => {
+                                                        const file = new File([response.data], `${album.name}.mp3`, { type: 'audio/mp3' });
+                                                        saveAs(file);
+                                                    });
+                                            });
+                                    }}>Download</Button>
+                                </Card.Body>
+                            </Card> </Col>
                     )
                 })}
             </Row>
